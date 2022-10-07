@@ -2,26 +2,29 @@ import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Cart from "../Cart/Cart";
 import TShirt from "../TShirt/TShirt";
-import './Home.css';
+import "./Home.css";
 
 const Home = () => {
-    const [cart,setCart] = useState([]);
+  const [cart, setCart] = useState([]);
   const tshirts = useLoaderData();
-  
-  const addToCart = (id)=>{
-    const addedProduct = tshirts.find(tshirt => tshirt._id === id);
 
-    let newCart = [];
+  const addToCart = (id) => {
+    const addedProduct = tshirts.find((tshirt) => tshirt._id === id);
 
-    if (addedProduct) {
-         newCart = [...cart,addedProduct];
-    };
+    const exist = cart.find((item) => item._id === id);
 
-   setCart(newCart)
+    if (!exist) {
+      const newCart = [...cart, addedProduct];
+      setCart(newCart);
+    } else {
+      alert("already added");
+    }
+  };
 
+  const removeHandler = (id)=>{
+    const remainingInCart = cart.filter(item=> item._id !== id);
+    setCart(remainingInCart);
   }
-
-
 
   return (
     <div className="products-container">
@@ -31,7 +34,7 @@ const Home = () => {
         ))}
       </div>
       <div className="cart-container">
-        <Cart cart={cart} />
+        <Cart removeHandler={removeHandler} cart={cart} />
       </div>
     </div>
   );
