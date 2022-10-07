@@ -1,4 +1,5 @@
 import React from "react";
+import './Cart.css';
 
 const Cart = ({ cart,removeHandler }) => {
   const totalPrice = cart.reduce(
@@ -8,10 +9,22 @@ const Cart = ({ cart,removeHandler }) => {
   const tax = +(totalPrice * 0.1).toFixed(2);
   const grandTotal = +(totalPrice + tax).toFixed(2);
 
+//   ** if-else conditional rendering
+
+let message;
+
+if ( cart.length > 3) {
+    message = <p>Discount is waiting for you</p>
+} else if (cart.length > 0){
+    message = <p>Thanks for buying</p>
+} else{
+    message = <p>Please Buy</p>
+}
+
   return (
     <div>
       <div>
-        <h1>Order Summary</h1>
+        <h1 className={cart.length > 0 ? 'green' : 'red'}>Order Summary</h1>
         <h3>Price:{totalPrice}</h3>
         <p>Tax:{tax}</p>
         <h2>GrandTotal: {grandTotal}</h2>
@@ -25,6 +38,16 @@ const Cart = ({ cart,removeHandler }) => {
                 </div>
             ))
         }
+    
+    {
+        message
+    }
+    {
+        cart.length === 0 && <h1> Cart is Empty ...</h1>
+    }
+    {
+        cart.length === 2 || <h1>2 Items in Cart is loading...</h1>
+    }
       </div>
     </div>
   );
