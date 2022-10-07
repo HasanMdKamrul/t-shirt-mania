@@ -25,7 +25,7 @@ if ( cart.length > 3) {
     <div>
       <div>
         <h1 className={cart.length > 0 ? 'green' : 'red'}>Order Summary</h1>
-        <h3>Price:{totalPrice}</h3>
+        <p className={`bold ${cart.length === 0 || 'blue' }`} >Price:{totalPrice}</p>
         <p>Tax:{tax}</p>
         <h2>GrandTotal: {grandTotal}</h2>
       </div>
