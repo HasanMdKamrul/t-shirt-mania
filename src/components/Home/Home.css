@@ -1,0 +1,15 @@
+.products-container {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}
+
+.t-shirt-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin: 20px;
+}
+
+.t-shirt-container img {
+  width: 250px;
+}

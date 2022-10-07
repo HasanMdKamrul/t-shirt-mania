@@ -1,0 +1,13 @@
+.tshirt {
+  border: 1px solid cadetblue;
+  border-radius: 15px;
+  padding-bottom: 20px;
+  background-color: beige;
+}
+
+.tshirt button {
+  padding: 5px 20px;
+  background-color: rgb(157, 157, 175);
+  border: none;
+  border-radius: 15px;
+}
